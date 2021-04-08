@@ -10,4 +10,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Quotes.Infra.Data\Quotes.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
