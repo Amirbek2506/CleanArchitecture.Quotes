@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Quotes.Application.Interfaces;
 using Quotes.Application.ViewModels;
@@ -13,10 +14,10 @@ namespace Quotes.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class QuotesController : ControllerBase
+    public class QuoteController : ControllerBase
     {
         private IQuoteService _quoteService;
-        public QuotesController(IQuoteService quoteService)
+        public QuoteController(IQuoteService quoteService)
         {
             _quoteService = quoteService;
         }
@@ -42,6 +43,7 @@ namespace Quotes.API.Controllers
             return await _quoteService.GetQuotesByCategory(titleCategory);
         }
 
+        
         [HttpGet("GetRandom")]
         public async Task<ActionResult<Quote>> GetRandom()
         {
@@ -49,12 +51,14 @@ namespace Quotes.API.Controllers
         }
 
         [HttpPost("Add")]
+        [Authorize(Roles = "custom")]
         public ActionResult<Response> Add(QuoteModel quote)
         {
             return _quoteService.AddQuote(quote);
         }
 
         [HttpPut("Update/{id}")]
+        [Authorize(Roles = "custom")]
         public ActionResult<Response> Update(int id, QuoteModel quoteModel)
         {
             return _quoteService.UpdateQuote(id,quoteModel);
@@ -62,6 +66,7 @@ namespace Quotes.API.Controllers
         }
 
         [HttpDelete("Delete/{id}")]
+        [Authorize(Roles = "custom")]
         public ActionResult<Response> Delete(int id)
         {
             return _quoteService.DeleteQuoteById(id);
@@ -81,7 +86,7 @@ namespace Quotes.API.Controllers
 
         private bool IsHourElapsed(Quote quote)
         {
-            return DateTime.Now.Subtract(quote.CreatedAt).TotalSeconds > 20;
+            return DateTime.Now.Subtract(quote.CreatedAt).TotalMinutes > 60;
         }
     }
 }

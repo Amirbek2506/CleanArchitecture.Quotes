@@ -50,14 +50,14 @@ namespace Quotes.Infra.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "8c27f66c-b311-4be1-a812-effe3f44c7d4",
+                            ConcurrencyStamp = "dd8704d6-83da-4e2e-8d13-a6c9f5113d02",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "7a993957-868a-4759-8466-5b14676907c5",
+                            ConcurrencyStamp = "86f66748-3316-4c7c-a6aa-165f4d075b5c",
                             Name = "custom",
                             NormalizedName = "CUSTOM"
                         });
@@ -156,13 +156,13 @@ namespace Quotes.Infra.Data.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9158ad71-9f35-4df3-b6ca-dc588ae5b306",
+                            ConcurrencyStamp = "436f1a7c-534f-445d-b08b-77af977aa882",
                             Email = "user@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "user@example.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKqlVMuoX51IQ/C6fihd6LoKbHRWF3sIhITo3Duz+ekznHFMzKsbydpumeXsvUlwLA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFu+PjxPa4SZNvyqiwXIueyPDO9XvIdkJZx6Qzx9aAGU5CjYI9T+v4hwKKX+38B0TQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

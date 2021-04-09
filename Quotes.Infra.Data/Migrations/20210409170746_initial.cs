@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Quotes.Infra.Data.Migrations
 {
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -177,14 +177,14 @@ namespace Quotes.Infra.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "8c27f66c-b311-4be1-a812-effe3f44c7d4", "admin", "ADMIN" },
-                    { 2, "7a993957-868a-4759-8466-5b14676907c5", "custom", "CUSTOM" }
+                    { 1, "dd8704d6-83da-4e2e-8d13-a6c9f5113d02", "admin", "ADMIN" },
+                    { 2, "86f66748-3316-4c7c-a6aa-165f4d075b5c", "custom", "CUSTOM" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "9158ad71-9f35-4df3-b6ca-dc588ae5b306", "user@example.com", false, false, null, "user@example.com", "admin", "AQAAAAEAACcQAAAAEKqlVMuoX51IQ/C6fihd6LoKbHRWF3sIhITo3Duz+ekznHFMzKsbydpumeXsvUlwLA==", null, false, "", false, "admin" });
+                values: new object[] { 1, 0, "436f1a7c-534f-445d-b08b-77af977aa882", "user@example.com", false, false, null, "user@example.com", "admin", "AQAAAAEAACcQAAAAEFu+PjxPa4SZNvyqiwXIueyPDO9XvIdkJZx6Qzx9aAGU5CjYI9T+v4hwKKX+38B0TQ==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

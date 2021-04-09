@@ -44,7 +44,7 @@ namespace Quotes.Infra.Data.Repositories
         public async Task<Quote> GetRandomQuote()
         {
             var quotes = await _context.Quotes.ToListAsync();
-            return quotes.OrderBy(qu => Guid.NewGuid()).First();
+            return quotes.OrderBy(qu => Guid.NewGuid()).FirstOrDefault();
         }
 
         public Response DeleteQuoteById(int id)
