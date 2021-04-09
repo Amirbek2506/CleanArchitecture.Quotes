@@ -13,7 +13,6 @@ namespace Quotes.Infra.Data.Context
             this.Database.EnsureCreated();
         }
 
-        public DbSet<Category> Categories { get; set; }
         public DbSet<Quote> Quotes { get; set; }
 
 

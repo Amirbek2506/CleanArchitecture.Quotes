@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Quotes.Infra.Data;
 using Quotes.Infra.Data.Context;
+using Quotes.Infrastructure.IoC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +27,15 @@ namespace Quotes.API
 
         public IConfiguration Configuration { get; }
 
+        private static void RegisterServices(IServiceCollection services)
+        {
+            DependencyContainer.RegisterServices(services);
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            RegisterServices(services);
             services.AddControllers();
 
             services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDbContext>(opt =>

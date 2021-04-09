@@ -50,16 +50,20 @@ namespace Quotes.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "Quotes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Title = table.Column<string>(type: "text", nullable: true)
+                    Author = table.Column<string>(type: "text", nullable: true),
+                    TextQuote = table.Column<string>(type: "text", nullable: true),
+                    Category = table.Column<string>(type: "text", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Quotes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -168,42 +172,19 @@ namespace Quotes.Infra.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Quotes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Author = table.Column<string>(type: "text", nullable: true),
-                    TextQuote = table.Column<string>(type: "text", nullable: true),
-                    CategoryId = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Quotes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Quotes_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "a3c2501e-806a-4510-8e58-6edd0a8afa96", "admin", "ADMIN" },
-                    { 2, "6d6af11d-42f2-4a7b-970e-00c0898b2e79", "custom", "CUSTOM" }
+                    { 1, "8c27f66c-b311-4be1-a812-effe3f44c7d4", "admin", "ADMIN" },
+                    { 2, "7a993957-868a-4759-8466-5b14676907c5", "custom", "CUSTOM" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "4e758e16-9022-4536-b78f-9eeba6de8bbe", "user@example.com", false, false, null, "user@example.com", "admin", "AQAAAAEAACcQAAAAEK1Aomx9hT080qyUvUmeNJNSGVOFxbUVQsRo0gZQP+fGsHSS1vL6Xc/m55UTtusdmw==", null, false, "", false, "admin" });
+                values: new object[] { 1, 0, "9158ad71-9f35-4df3-b6ca-dc588ae5b306", "user@example.com", false, false, null, "user@example.com", "admin", "AQAAAAEAACcQAAAAEKqlVMuoX51IQ/C6fihd6LoKbHRWF3sIhITo3Duz+ekznHFMzKsbydpumeXsvUlwLA==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -246,11 +227,6 @@ namespace Quotes.Infra.Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Quotes_CategoryId",
-                table: "Quotes",
-                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -278,9 +254,6 @@ namespace Quotes.Infra.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
         }
     }
 }

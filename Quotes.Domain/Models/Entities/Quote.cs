@@ -13,10 +13,8 @@ namespace Quotes.Domain.Entities
         public int Id { get; set; }
         public string Author { get; set; }
         public string TextQuote { get; set; }
-        public int CategoryId { get; set; }
+        public string Category { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-
-        public virtual Category Category { get; set; }
     }
 }
